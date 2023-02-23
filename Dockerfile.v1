@@ -1,0 +1,11 @@
+FROM python:3.10.10-alpine3.17
+
+COPY . /flask-docker-demo/
+
+WORKDIR /flask-docker-demo/
+
+RUN pip3 install -r requirements.txt && pip3 cache purge
+
+EXPOSE 8080
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
